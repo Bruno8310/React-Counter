@@ -17,13 +17,11 @@ class Counter extends React.Component {
     }
 
     decrease = () => {
+        this.props.decrease()
         this.setState((prevState) => ({
             number: prevState.number - 1
         }))
-        this.props.decrease()
     }
-
-
 
     render() {
         return (
@@ -33,6 +31,21 @@ class Counter extends React.Component {
                 <button onClick={this.decrease}>-</button>
             </h2>
         )
+    }
+
+    // 执行render前获取新的props, 判断count是否一致,再更新
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.count !== this.props.count) {
+            this.setState({
+                number: 0
+            })
+        }
+    }
+    // 移除之前执行逻辑代码，再render
+    componentWillUnmount() {
+        this.setState({
+            number: 0
+        })
     }
 
 }

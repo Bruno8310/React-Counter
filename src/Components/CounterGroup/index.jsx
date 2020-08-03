@@ -18,7 +18,8 @@ class CounterGroup extends React.Component {
           return false
         }
         this.setState({
-            count: size
+            count: size,
+            totalSum: 0
         })
       }
 
@@ -41,7 +42,7 @@ class CounterGroup extends React.Component {
                 <h3>total sum: {this.state.totalSum} </h3>
                 {
                     new Array(this.state.count).fill().map((value, index) =>
-                        <Counter key={index} increase={this.handleIncreate} decrease={this.handleDecreate}/>)
+                        <Counter key={index} increase={this.handleIncreate} decrease={this.handleDecreate} count={this.state.count}/>)
                 }
             </div>
         )
