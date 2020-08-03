@@ -22,15 +22,26 @@ class CounterGroup extends React.Component {
         })
       }
 
+    handleIncreate = () => {
+        this.setState((prevState) => ({
+            totalSum: prevState.totalSum + 1
+        }))
+    }
+
+    handleDecreate = () => {
+        this.setState((prevState) => ({
+            totalSum: prevState.totalSum - 1
+        }))
+    }
 
     render() {
         return (
             <div>
                 <h3>Number of Counter: <input onChange={this.getInputNumber} type="Number" value={this.state.count}/></h3>
-                <h3>total sum: </h3>
+                <h3>total sum: {this.state.totalSum} </h3>
                 {
                     new Array(this.state.count).fill().map((value, index) =>
-                        <Counter key={index} />)
+                        <Counter key={index} increase={this.handleIncreate} decrease={this.handleDecreate}/>)
                 }
             </div>
         )
