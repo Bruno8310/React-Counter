@@ -1,5 +1,5 @@
 import React from 'react';
-import Counter from './Components/CounterGroup';
+import CounterGroup from './Components/CounterGroup';
 import './App.css';
 
 function App() {
